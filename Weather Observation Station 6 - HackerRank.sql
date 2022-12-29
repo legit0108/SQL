@@ -11,3 +11,6 @@ CITY LIKE 'u%';
 
 SELECT DISTINCT(CITY) FROM STATION WHERE SUBSTR(CITY, 1, 1) IN ('a', 'e', 'i', 'o', 'u');
 
+-- Solution - 3 : Extract first character using LEFT
+
+SELECT DISTINCT(CITY) FROM STATION WHERE LEFT(CITY, 1) IN ('a', 'e', 'i', 'o', 'u');
