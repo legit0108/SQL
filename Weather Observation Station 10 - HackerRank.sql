@@ -1,0 +1,16 @@
+-- Solution-1: Using OR
+
+SELECT DISTINCT(CITY) FROM STATION WHERE NOT
+(CITY LIKE '%a' OR
+ CITY LIKE '%e' OR
+ CITY LIKE '%i' OR
+ CITY LIKE '%o' OR
+ CITY LIKE '%u');
+
+-- Solution-2: Using SUBSTR
+
+SELECT DISTINCT(CITY) FROM STATION WHERE SUBSTR(CITY, LENGTH(CITY), LENGTH(CITY)) NOT IN ('a', 'e', 'i', 'o', 'u');
+
+-- Solution-3: Using RIGHT
+
+SELECT DISTINCT(CITY) FROM STATION WHERE RIGHT(CITY, 1) NOT IN ('a', 'e', 'i', 'o', 'u');
