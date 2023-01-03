@@ -19,12 +19,14 @@ SELECT DISTINCT(CITY) FROM STATION WHERE NOT
  CITY LIKE '%u'
 );
 
+
 -- Solution-2: Using SUBSTR
 
 SELECT DISTINCT(CITY) FROM STATION WHERE 
 SUBSTR(CITY, 1, 1) NOT IN ('a', 'e', 'i', 'o', 'u')
 AND 
 SUBSTR(CITY, LENGTH(CITY), LENGTH(CITY)) NOT IN ('a', 'e', 'i', 'o', 'u');
+
 
 -- Solution-3: Using LEFT, RIGHT
 
