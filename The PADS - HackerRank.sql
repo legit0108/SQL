@@ -1,0 +1,14 @@
+-- Solution-1: MySQL
+
+SET SQL_MODE=PIPES_AS_CONCAT; -- To use || to concat strings instead of the concat function
+
+SELECT (NAME || "(" || LEFT(OCCUPATION,1) || ")") FROM OCCUPATIONS ORDER BY NAME;
+
+SELECT ('There are a total of ' || COUNT(*) || ' ' || LOWER(OCCUPATION) || 's.') FROM OCCUPATIONS GROUP BY OCCUPATION ORDER BY COUNT(*), OCCUPATION;
+
+
+-- Solution-2: MS SQL
+
+SELECT (NAME + "(" + LEFT(OCCUPATION,1) + ")") FROM OCCUPATIONS ORDER BY NAME;
+
+SELECT ('There are a total of ' + CAST(COUNT(*) AS VARCHAR) + ' ' + LOWER(OCCUPATION) + 's.') FROM OCCUPATIONS GROUP BY OCCUPATION ORDER BY COUNT(*), OCCUPATION;
