@@ -1,0 +1,3 @@
+-- Use COUNT() aggregate function
+
+SELECT COUNT(*) FROM CITY WHERE POPULATION>100000;  
