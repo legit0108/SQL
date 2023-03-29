@@ -19,15 +19,16 @@ LIMIT 20;
 
 
 -- Solution-2: Using loops
--- Run the mysql client with --skip-column-names
 
 -- WHILE loop:
+
+CREATE TABLE RESULT(STR VARCHAR(50));
 
 DELIMITER //
 CREATE PROCEDURE  drawTriangle(count INT)
 BEGIN
    WHILE count >= 1 DO
-      SELECT REPEAT('* ', count) AS "";
+      INSERT INTO RESULT(STR) VALUES (REPEAT('* ', count));
       SET count := count - 1;
    END WHILE;
 END //
@@ -35,8 +36,11 @@ DELIMITER ;
 
 CALL drawTriangle(20);
 
+SELECT * FROM RESULT;
 
 -- LOOP statement: 
+
+CREATE TABLE RESULT(STR VARCHAR(50)); 
 
 DELIMITER //
 CREATE PROCEDURE  drawTriangle(count INT)
@@ -44,7 +48,7 @@ BEGIN
 PRINT: LOOP
     IF count = 0 THEN LEAVE PRINT;
     END IF;
-    SELECT REPEAT('* ', count) AS "";
+    INSERT INTO RESULT(STR) VALUES(REPEAT("* ", COUNT));
     SET count := count - 1;
    END LOOP;
 END //
@@ -52,14 +56,17 @@ DELIMITER ;
 
 CALL drawTriangle(20);
 
+SELECT * FROM RESULT;
 
 -- REPEAT UNTIL: 
+
+CREATE TABLE RESULT(STR VARCHAR(50));
 
 DELIMITER //
 CREATE PROCEDURE  drawTriangle(count INT)
 BEGIN
    REPEAT
-    SELECT REPEAT('* ', count) AS "";
+    INSERT INTO RESULT(STR) VALUES (REPEAT('* ', count));
     SET count := count - 1;
    UNTIL COUNT = 0
    END REPEAT;
@@ -67,3 +74,20 @@ END //
 DELIMITER ;
 
 CALL drawTriangle(20);
+
+SELECT * FROM RESULT;
+
+
+-----X-----X-----X-----X-----X-----X-----X-----
+
+
+-- Solution-3: Recursion
+
+WITH RECURSIVE PRINT(N) AS
+(
+ SELECT 20
+ UNION
+ SELECT N-1 FROM PRINT WHERE N>1
+)
+
+SELECT REPEAT('* ', N) FROM PRINT;
