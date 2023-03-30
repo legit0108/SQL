@@ -7,7 +7,7 @@
 -- Use LIMIT 20 to avoid white space
 -- Since select requires a table, we are using INFORMATION_SCHEMA.TABLES as a dummy table
 -- INFORMATION_SCHEMA
--- -> Database to store information about all other databased that MySQL server maintains
+-- -> Database to store information about all other databases that the MySQL server maintains
 -- -> TABLES table provides information about tables in the databases
 
 SET @NUMBER = 21;
