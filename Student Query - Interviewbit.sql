@@ -1,0 +1,5 @@
+/* YOUR QUERY GOES HERE
+   Example: SELECT * FROM EMPLOYEE; 
+*/
+
+SELECT Name FROM STUDENT WHERE Class="1" AND SubjectCount > 3;
